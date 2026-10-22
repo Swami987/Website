@@ -1,0 +1,696 @@
+
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Academic homepage of Swaminathan Rajagopalan, PhD student at Johns Hopkins University.">
+  <title>Swaminathan Rajagopalan</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;1,6..96,500&family=IBM+Plex+Mono:wght@400;500&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #edf0f3;
+      --surface: #f7f9fb;
+      --ink: #101a24;
+      --muted: #586675;
+      --rule: #cbd3dc;
+      --accent: #3045ce;
+      --accent-soft: #e2e7ff;
+      --display: "Bodoni Moda", Georgia, serif;
+      --body: "STIX Two Text", Georgia, serif;
+      --mono: "IBM Plex Mono", monospace;
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0e151d;
+      --surface: #141e29;
+      --ink: #e5eaf0;
+      --muted: #a2afbd;
+      --rule: #303d4b;
+      --accent: #a6b4ff;
+      --accent-soft: #222d4b;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      html:not([data-theme]) {
+        color-scheme: dark;
+        --bg: #0e151d;
+        --surface: #141e29;
+        --ink: #e5eaf0;
+        --muted: #a2afbd;
+        --rule: #303d4b;
+        --accent: #a6b4ff;
+        --accent-soft: #222d4b;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.12rem;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    .wrap {
+      width: min(100% - 2.5rem, 47rem);
+      margin-inline: auto;
+    }
+
+    .mono {
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    /* Navigation */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-block: 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .wordmark {
+      color: var(--ink);
+      text-decoration: none;
+      font-family: var(--display);
+      font-size: 1.25rem;
+      white-space: nowrap;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: .7rem;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--rule);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: 50%;
+      width: 2.25rem;
+      height: 2.25rem;
+      cursor: pointer;
+      font-size: 1rem;
+      flex: none;
+    }
+
+    /* Introduction */
+
+    .hero {
+      padding-block: 6rem 4.25rem;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      color: var(--muted);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 10vw, 5.2rem);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      margin: 1.4rem 0 1.5rem;
+      overflow-wrap: break-word;
+    }
+
+    h1 em {
+      display: block;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .intro {
+      max-width: 34rem;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1.75rem;
+      font-size: .98rem;
+    }
+
+    .hero-links a {
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+    }
+
+    /* Shared sections */
+
+    .section {
+      border-top: 1px solid var(--rule);
+      padding-block: 3rem 3.25rem;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .section-number {
+      color: var(--accent);
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(2rem, 6vw, 2.65rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* About */
+
+    .about-copy {
+      max-width: 39rem;
+      margin: 0;
+    }
+
+    .about-copy + .about-copy {
+      margin-top: 1rem;
+    }
+
+    .education {
+      display: grid;
+      gap: 0;
+      margin-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .education-item {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 1rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .education-item .when {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .7rem;
+      padding-top: .25rem;
+    }
+
+    .education-item p {
+      margin: 0;
+    }
+
+    .education-item strong {
+      font-weight: 600;
+    }
+
+    .education-item small {
+      display: block;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* Interests */
+
+    .interest-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .interest {
+      background: var(--surface);
+      border: 1px solid var(--rule);
+      padding: 1.4rem;
+      min-height: 10rem;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .interest:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .interest-index {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .7rem;
+    }
+
+    .interest h3 {
+      margin: .65rem 0 .45rem;
+      font-family: var(--display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .interest p {
+      color: var(--muted);
+      font-size: .98rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Writings */
+
+    .writing {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      padding-block: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .writing:last-child {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .writing-index {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: .75rem;
+      padding-top: .35rem;
+    }
+
+    .writing h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .writing-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem .85rem;
+      margin-top: .5rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .035em;
+      text-transform: uppercase;
+    }
+
+    .writing-desc {
+      margin: .85rem 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 36rem;
+    }
+
+    .writing details {
+      margin-top: .85rem;
+    }
+
+    .writing summary {
+      width: fit-content;
+      color: var(--accent);
+      cursor: pointer;
+      font-size: .95rem;
+      list-style-position: inside;
+    }
+
+    .writing .abstract {
+      margin: .75rem 0 0;
+      font-size: 1rem;
+      max-width: 36rem;
+    }
+
+    /* Contact and footer */
+
+    .contact-copy {
+      max-width: 34rem;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--rule);
+      padding-block: 1.5rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 520px) {
+      .wrap {
+        width: min(100% - 2rem, 47rem);
+      }
+
+      .topbar {
+        align-items: flex-start;
+      }
+
+      .nav-right {
+        gap: .6rem;
+      }
+
+      nav {
+        gap: .6rem;
+        padding-top: .5rem;
+      }
+
+      nav a {
+        font-size: .62rem;
+      }
+
+      .hero {
+        padding-block: 4.5rem 3.5rem;
+      }
+
+      .section {
+        padding-block: 2.5rem;
+      }
+
+      .interest-list {
+        grid-template-columns: 1fr;
+      }
+
+      .interest {
+        min-height: auto;
+      }
+
+      .education-item {
+        grid-template-columns: 5.5rem 1fr;
+        gap: .65rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <a class="wordmark" href="#home" aria-label="Home">SR.</a>
+
+      <div class="nav-right">
+        <nav aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#interests">Interests</a>
+          <a href="#writings">Writings</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle"
+          type="button" aria-label="Switch to dark theme"
+          title="Toggle light and dark themes">☾</button>
+      </div>
+    </header>
+
+    <main id="home">
+      <section class="hero">
+        <span class="eyebrow mono">Mathematics · PhD student</span>
+
+        <h1>
+          Swaminathan
+          <em>Rajagopalan</em>
+        </h1>
+
+        <p class="intro">
+          I am a PhD student at Johns Hopkins University, working
+          with David Gepner. My mathematical interests lie in
+          homotopy theory and arithmetic geometry.
+        </p>
+
+        <div class="hero-links">
+          <a href="#about">A little about me ↓</a>
+          <a href="#writings">Explore my writings ↗</a>
+        </div>
+      </section>
+
+      <section class="section about" id="about"
+        aria-labelledby="about-title">
+        <div class="section-heading">
+          <h2 id="about-title">About</h2>
+          <span class="section-number mono">01 / Background</span>
+        </div>
+
+        <p class="about-copy">
+          I am a PhD student at Johns Hopkins University, USA.
+          My advisor is David Gepner. I am interested in homotopy
+          theory and arithmetic geometry.
+        </p>
+
+        <p class="about-copy">
+          Before coming to Johns Hopkins, I completed my Master's
+          at Universität Münster, Germany, and my Bachelor's at
+          Chennai Mathematical Institute, India.
+        </p>
+
+        <div class="education" aria-label="Academic background">
+          <div class="education-item">
+            <span class="when">Present</span>
+            <p>
+              <strong>Johns Hopkins University</strong>
+              <small>PhD student · Advisor: David Gepner</small>
+            </p>
+          </div>
+
+          <div class="education-item">
+            <span class="when">Master's</span>
+            <p>
+              <strong>Universität Münster</strong>
+              <small>Germany</small>
+            </p>
+          </div>
+
+          <div class="education-item">
+            <span class="when">Bachelor's</span>
+            <p>
+              <strong>Chennai Mathematical Institute</strong>
+              <small>India</small>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="interests"
+        aria-labelledby="interests-title">
+        <div class="section-heading">
+          <h2 id="interests-title">Interests</h2>
+          <span class="section-number mono">02 / Mathematics</span>
+        </div>
+
+        <p class="section-note">
+          A few areas of mathematics that I find compelling.
+        </p>
+
+        <div class="interest-list">
+          <article class="interest">
+            <span class="interest-index">01 — TOPOLOGY</span>
+            <h3>Homotopy theory</h3>
+            <p>
+              The study of spaces, maps, and their structure up
+              to continuous deformation.
+            </p>
+          </article>
+
+          <article class="interest">
+            <span class="interest-index">02 — NUMBER & GEOMETRY</span>
+            <h3>Arithmetic geometry</h3>
+            <p>
+              The interplay between algebraic geometry,
+              number theory, and arithmetic structures.
+            </p>
+          </article>
+
+          <article class="interest">
+            <span class="interest-index">03 — HIGHER STRUCTURES</span>
+            <h3>Higher algebra</h3>
+            <p>
+              Algebraic structures and their relationships
+              in homotopical and categorical settings.
+            </p>
+          </article>
+
+          <article class="interest">
+            <span class="interest-index">04 — ONGOING CURIOSITY</span>
+            <h3>Topology & geometry</h3>
+            <p>
+              Connections between abstract structures,
+              geometric intuition, and algebraic ideas.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="writings"
+        aria-labelledby="writings-title">
+        <div class="section-heading">
+          <h2 id="writings-title">Writings</h2>
+          <span class="section-number mono">03 / Notes & Theses</span>
+        </div>
+
+        <p class="section-note">
+          Selected mathematical writing and academic work.
+        </p>
+
+        <article class="writing">
+          <span class="writing-index">01.</span>
+          <div>
+            <h3>Master's thesis: Even filtrations and stacks</h3>
+
+            <div class="writing-meta">
+              <span>Master's thesis</span>
+              <span>Homotopy theory</span>
+            </div>
+
+            <p class="writing-desc">
+              I study the even filtration of Hahn–Raksit–Wilson
+              and use their techniques to define an even
+              filtration on topological restriction homology (TR).
+            </p>
+
+            <details>
+              <summary>Read extended description</summary>
+              <p class="abstract">
+                This thesis explores even filtrations in the
+                setting developed by Hahn, Raksit, and Wilson,
+                with an application to topological restriction
+                homology. The aim is to adapt these techniques
+                to construct an even filtration on TR.
+              </p>
+            </details>
+
+            <!-- Add a thesis link when you have a public PDF:
+            <p><a href="thesis.pdf">Read the thesis (PDF) ↗</a></p>
+            -->
+          </div>
+        </article>
+
+        <!-- Copy the article structure above to add more writings. -->
+      </section>
+
+      <section class="section" id="contact"
+        aria-labelledby="contact-title">
+        <div class="section-heading">
+          <h2 id="contact-title">Contact</h2>
+          <span class="section-number mono">04 / Get in touch</span>
+        </div>
+
+        <p class="contact-copy">
+          For questions about my mathematical interests or
+          academic work, feel free to get in touch.
+        </p>
+
+        <!-- Add your preferred public email or academic profile here. -->
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 Swaminathan Rajagopalan</span>
+      <a href="#home">Back to top ↑</a>
+    </footer>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+    toggle.addEventListener("click", () => {
+      const isDark = root.dataset.theme !== "dark";
+      root.dataset.theme = isDark ? "dark" : "light";
+      toggle.textContent = isDark ? "☀" : "☾";
+      toggle.setAttribute(
+        "aria-label",
+        isDark ? "Switch to light theme" : "Switch to dark theme"
+      );
+    });
+  </script>
+</body>
+</html>
